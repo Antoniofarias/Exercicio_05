@@ -13,41 +13,43 @@ namespace Exercicio_05
             //Desenvolva um programa para verificar se o aluno foi aprovado ou se ficou de exame (média >=7)
             //Caso fique de exame solicite a nota do exame e verifique se alcançou a média >=5 aprovado, do contrário reprovado.
 
-            int n1, n2, n3, media, exame, mf;
-
             Console.Write("Digite a nota da N1: ");
-            n1 = Convert.ToInt32(Console.ReadLine());
+            int n1 = int.Parse(Console.ReadLine());
 
             Console.Write("Digite a nota da N2: ");
-            n2 = Convert.ToInt32(Console.ReadLine());
+            int n2 = int.Parse(Console.ReadLine());
 
             Console.Write("Digite a nota da N3: ");
-            n3 = Convert.ToInt32(Console.ReadLine());
+            int n3 = int.Parse(Console.ReadLine());
 
-            media = (n1 + n2 + n3) / 3;
+            CalculoMedia mediaAluno = new CalculoMedia();
+            CalculoMedia exameAluno = new CalculoMedia();
 
-            if (media >= 7)
+            mediaAluno.Media(n1, n2, n3);
+            if (mediaAluno.media >= 7)
             {
-                Console.WriteLine("Média "+media+" Aprovado!");
+                Console.WriteLine("Média " + mediaAluno.media + " Aprovado!");
             }
             else
             {
-                Console.WriteLine("Média " + media + " de Exame!");
+                Console.WriteLine("Média " + mediaAluno.media + " de Exame!");
 
                 Console.Write("Digite a nota do exame: ");
-                exame = Convert.ToInt32(Console.ReadLine());
+                int exame = int.Parse(Console.ReadLine());
 
-                mf = (media + exame) / 2;
-                if (mf >= 5)
+                exameAluno.Exame(mediaAluno.media, exame);
+
+                if (exameAluno.mf >= 5)
                 {
-                    Console.WriteLine("Média " + mf + " Aprovado!");
+                    Console.WriteLine("Média " + exameAluno.mf + " Aprovado!");
                 }
                 else
                 {
-                    Console.WriteLine("Média " + mf + " Reprovado!");
+                    Console.WriteLine("Média " + exameAluno.mf + " Reprovado!");
                 }
             }
             Console.ReadKey();
         }
+            
     }
 }
